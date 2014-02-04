@@ -56,6 +56,29 @@ nimoerBody.prepend("<tr><th>姓名</th><th>电话</th><th>寝室</th></tr>");
 addRow(nimoerBody, "郑阳", "18818212254", "S19-114");
 addRow(nimoerBody, "只是测试", "18818212254", "S19-114");
 
+var registerState = 2; // 0--非工作时间 此位置为空 页面清爽
+                       // 1--未报到 2--已报到，未签离
+if(registerState == 1)
+{
+  $("#register").text("报到")
+  var registerBody = createModal($(".container"), "registerModal", "报到", table);
+  registerBody = registerBody.children("table").last();
+  registerBody.attr("cellpadding", 5);
+  attachModal($("#register"), "registerModal");
+  addInput(registerBody, '吐槽 -.-||', 'Talk', 'no thing no talk……');
+  addEndButton(registerBody);
+}
+if(registerState == 2)
+{
+  $("#register").text("签离")
+  var registerBody = createModal($(".container"), "registerModal", "签离", table);
+  registerBody = registerBody.children("table").last();
+  registerBody.attr("cellpadding", 5);
+  attachModal($("#register"), "registerModal");
+  addInput(registerBody, '吐槽 -.-||', 'Talk', 'no thing no talk……');
+  addEndButton(registerBody);
+}
+
 
 var dutyImage = '【待完善】';
 var dutyBody = createModal($(".container"), "duty", "值班表", dutyImage);
